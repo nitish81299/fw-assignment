@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRD Database App</title>
+    
+    <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+        <style>
+            .alert {
+                background: green;
+                padding: 1rem;
+                border-radius: 5px;
+                color: white;
+                margin: 1rem;
+            }
+        </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto mt-5">
+                <h1 class="mb-5">Database Operations</h1>
+
+                <!--Create Function-->
+                <form action="{{ url_for('create_Data')}}" method="POST">
+
+                    <label for="create" class="form-label">Create</label>
+
+                    <div class="form-floating">
+                        <span class="input-group-text">JSON data</span>
+                        <textarea class="form-control mb-3" aria-label="With textarea" id="create" name="json-data" style="height: 150px"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+
+                <!--Read Function-->
+                <form action="{{url_for('read_Data')}}" method="POST">
+                    <label for="read" class="form-label">Read</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">Key</span>
+                        <input type="text" class="form-control" id="read" aria-describedby="basic-addon3" name="key">
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary">Read</button>
+                    </div>
+                </form>
+
+                <!--Delete Function-->
+                <form action="{{url_for('delete_Data')}}" method="POST">
+                    <label for="delete" class="form-label">Delete</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon3">Key</span>
+                        <input type="text" class="form-control" id="delete" aria-describedby="basic-addon3" name="key">
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-primary">Delete</button>
+                    </div>
+                </form>
+                
+                <div class="alert">
+                    {{result}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto mt-5">
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
